@@ -23,28 +23,44 @@ router.post('/', cors(), function(req, res) {
     res.sendFile('send.html', {root: './views/.html/'});
 
     var transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'Gmail',
         auth: {
           user: 'chris.moroney.mameon@gmail.com',
-          pass: 'MaMeOn123!@#'
+          pass: 'MAMEONmameon'
         }
     });
     
-    message="Customer message from: " + from + "\n\n" + body;
-
-
-    var mailOptions = {
+    
+    var messageToCS="Customer message from: " + from + "\n\n" + body;
+    var mailOptionsToCustomerService = {
         from:from, 
-        to:'christopher.moroney1@gmail.com', 
+        to:'mameon.customer.service@gmail.com', 
         subject:"Customer's Message - " + subject,
-        text:message,
+        text:messageToCS,
     }
 
-    transporter.sendMail(mailOptions,function(error, info){
+    var messageToCustomer="Hello, \n\nThank you for contacting us through our website. This email is sent to confirm that your message was sent to our customer " +
+    "service team and we will respond as soon as we can! \n\nThank you again, \n MaMeOn";
+    var mailOptionsToCustomer = {
+        from:from, 
+        to:from, 
+        subject:"Mameon - Contact Confirmation",
+        text:messageToCustomer,
+    }
+
+    transporter.sendMail(mailOptionsToCustomerService,function(error, info){
         if(error){
             console.log(error);
         } else {
-            console.log("Email Send" + info.response);
+            console.log("Email Sent: " + info.response);
+        }
+    });
+
+    transporter.sendMail(mailOptionsToCustomer,function(error, info){
+        if(error){
+            console.log(error);
+        } else {
+            console.log("Email Sent: " + info.response);
         }
     });
 });

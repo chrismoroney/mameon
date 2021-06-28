@@ -5,6 +5,7 @@
     list-style: none;
     box-sizing: border-box;
     font-family: Garamond, serif;
+    animation: fade-in 1s;
 }
 
 body {
@@ -161,4 +162,13 @@ a:hover{
 
 #btn:hover::before{
   height: 180%;
+}
+
+@keyframes fade-in {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
 }
