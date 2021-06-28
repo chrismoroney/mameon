@@ -11,6 +11,7 @@ var servicesRouter = require('./routes/services');
 var storiesRouter = require('./routes/stories');
 var aboutusRouter = require('./routes/aboutus');
 var contactRouter = require('./routes/contact');
+var sendRouter = require('./routes/send');
 
 var app = express();
 
@@ -25,11 +26,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+
 app.use('/', homeRouter);
 app.use('/services', servicesRouter);
 app.use('/stories', storiesRouter);
 app.use('/aboutus', aboutusRouter);
 app.use('/contact', contactRouter);
+app.use('/send', sendRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

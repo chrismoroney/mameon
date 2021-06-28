@@ -4,6 +4,8 @@
         <title>Contact Us</title>
         <link rel="stylesheet" href="stylesheets/contact.css">
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
@@ -20,6 +22,27 @@
         </nav>
     </head>
     <body>
-
+        <div class="container">
+            <br>
+            <h1 class="text-center">Contact Us</h1>
+            <br>
+            <h3 class="text-center">If you have any questions, feel free to send an email to our team and we will get in touch!</h3>
+            <br>
+            <form autocomplete="off" action="/send" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="email" name="from" placeholder="From:" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject:" required>
+                </div>
+                <div class="form-group">
+                    <textarea required class="form-control" name="body" cols="30" rows="10" placeholder="Body:"></textarea>
+                </div>
+                <div class="form-group">
+                    <button id="btn" class="text-center btn-lg">Send Message</button>
+                </div>
+            </form>
+        </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </html>
